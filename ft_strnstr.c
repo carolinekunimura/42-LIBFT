@@ -3,51 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 00:20:56 by coder             #+#    #+#             */
-/*   Updated: 2022/09/14 18:42:28 by coder            ###   ########.fr       */
+/*   Updated: 2022/09/19 21:00:15 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-char * ft_strnstr(const char *big, const char *little, size_t len)
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
+	size_t	k;
 
 	i = 0;
-	j = 0;
+	k = 0;
 	if (!*little)
 		return ((char *)big);
 	if (len == 0)
-		return ((char *) 0);
+		return (0);
 	while (big[i])
 	{
-		if (big[i] == little[0])
+		j = 0;
+		if (big[i] == little[j])
 		{
-			while (little[j])
-			{
-				if (big[i + j] != little[j])
-				{
-					j = 0;
-					break;
-				}
-				else if (j == len - 1 || little[j + 1] == '\0')
-				{
-					return ((char *)&big[i]);
-				}
-			j++;
-			}
-		}	
-	i++;
-}
-	return ((char *) 0);
-}
-
-int main ()
-{
-	printf("%s\n", ft_strnstr("aaabcabcd", "cd", 8));
-	return (0);
+			k = i;
+			while (big[k] && little[j] && k < len)
+				if (big[k++] != little[j++])
+					break ;
+			if (little[j] == '\0' && big[--k] == little[--j])
+				return (&((char *)big)[i]);
+		}
+		i++;
+	}
+	return ((void *)0);
 }
