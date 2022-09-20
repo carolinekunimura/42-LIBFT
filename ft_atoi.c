@@ -1,30 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 20:07:26 by coder             #+#    #+#             */
-/*   Updated: 2022/09/20 19:47:10 by ckunimur         ###   ########.fr       */
+/*   Created: 2022/09/20 19:25:08 by ckunimur          #+#    #+#             */
+/*   Updated: 2022/09/20 20:35:59 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+static int	ft_isspace(int c)
 {
-	if (dst > src)
+	if (c == ' ' || c == '\n' || c == '\t' || c == '\r'
+		|| c == '\f' || c == '\v')
+		return (1);
+	return (0);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	size_t	num;
+	size_t	sign;
+
+	while ((ft_isspace(*nptr)))
+		nptr++;
+	sign = 1;
+	if (*nptr == '+' || *nptr == '-')
 	{
-		while (len > 0)
-		{
-			len--;
-			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
-		}
+		if (*nptr == '-')
+		sign = -1;
+		nptr++;
 	}
-	else
+	num = 0;
+	while ((ft_isdigit(*nptr)))
 	{
-		ft_memcpy(dst, src, len);
+		num *= 10;
+		num += sign * (*nptr - 48);
+		nptr++;
 	}
-	return (dst);
+	return (num);
 }
