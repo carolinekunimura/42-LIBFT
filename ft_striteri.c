@@ -6,14 +6,11 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 19:35:58 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/09/28 20:17:29 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:25:45 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {

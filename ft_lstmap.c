@@ -6,9 +6,11 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:11:25 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/10/01 00:49:20 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/03 21:25:00 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -23,7 +25,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		else
 		ft_lstadd_back(&newlst, aux);
 		lst = lst->next;
-		
 	}
 	return (newlst);
 }

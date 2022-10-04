@@ -6,16 +6,11 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 00:27:07 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/10/01 00:27:08 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/03 21:24:12 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_list
-{
-	void *	content;
-	t_list	next;
-}t_list;
-
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {
@@ -27,5 +22,5 @@ int	ft_lstsize(t_list *lst)
 		lst = lst->next;
 		count++;
 	}
-	return (count)
+	return (count);
 }

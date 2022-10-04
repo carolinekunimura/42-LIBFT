@@ -6,7 +6,7 @@
 #    By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 18:59:32 by coder             #+#    #+#              #
-#    Updated: 2022/10/01 00:52:39 by ckunimur         ###   ########.fr        #
+#    Updated: 2022/10/03 21:50:40 by ckunimur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ SRC = ft_isalpha.c ft_isdigit.c ft_memset.c ft_bzero.c ft_isalnum.c ft_isascii.c
 
 OBJ	= $(SRC:%.c=%.o)
 
-SRCBONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstadd_back.c ft_lstclear.c ftlstdelone.c ftletiter.c ft_lstlast.c\
-			ft_lstmap.c ft_lstnew.c ft_lstsize.c
+SRCBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstclear.c ftlstdelone.c ftletiter.c ft_lstlast.c\
+			ft_lstmap.c ft_lstsize.c
 
 OBJBONUS = $(SRCBONUS:%.c=%.o)
 
@@ -38,16 +38,16 @@ $(NAME): $(OBJ)
 $(OBJ):	$(SRC)
 	gcc $(FLAG) -c $(SRC)
 
+bonus: $(OBJBONUS)
+
+$(OBJBONUS): $(SRCBONUS)
+		gcc $(FLAG) -c $(@:%.o=%.c)
+		ar rcs $(NAME) $(OBJBONUS)
+
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) $(OBJBONUS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonus: $(OBJBONUS)
-
-$(OBJBONUS): 
-		gcc $(FLAG) -c $(@:%.o=%.c)
-		ar rcs $(NAME) $@

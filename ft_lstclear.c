@@ -6,9 +6,11 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 23:55:17 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/10/01 00:03:43 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:26:20 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
