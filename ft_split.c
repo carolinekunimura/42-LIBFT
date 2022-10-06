@@ -6,28 +6,24 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 13:43:40 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/10/04 19:10:10 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:16:48 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_count_str(char const *s, char c)
 {
+	unsigned int	count;
 
-	int	i;
-	int count;
-
-	i = 0;
 	count = 1;
-	if (!s)
-		return ('\0');
-	while (s[i])
+	if (s[0] == c || !s)
+		count = 0;
+	while (*s)
 	{
-		if (s[i] == (unsigned char)c)
+		if (*s == c && s[+1] != c && s[+1] != '\0')
 			count++;
-		i++;
+		s++;
 	}
 	return (count);
 }
@@ -35,50 +31,41 @@ static int	ft_count_str(char const *s, char c)
 static int	ft_strsize(char const *s, char c)
 {
 	int	i;
-	int j;
-	char *p_str;
 
-	p_str = NULL;
 	i = 0;
-	j = 0;
-	if (!s)
-		return ('\0');
-	while (s[i])
+	while (*s != c && *s != '\0')
 	{
-		if (s[i] == (unsigned char)c)
-			p_str[j] = i;
-		j++;
 		i++;
+		s++;
 	}
-	return (*p_str);
+	return (i);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	count;
 	size_t	j;
-	char	*n;
-	char	str[0][0];
-	char 	**p = NULL;
+	size_t	k;
+	size_t	size;
+	char	**p;
 
-	n = 0;
 	j = 0;
+	k = 0;
+	size = 0;
 	count = (ft_count_str(s, c));
-	*p = ft_calloc(count, sizeof(char *));
+	p = (char **)ft_calloc(count + 1, sizeof(char *));
 	while (j < count)
 	{
-		n[j] = ft_strsize(s, c);
-		str[j][0] = *ft_substr(s, j, n[j]);
+		while (*s == c)
+			s++;
+		size = ft_strsize(s, c);
+		p[j] = (char *)ft_calloc(size + 1, sizeof(char));
+		while (k < size)
+			p[j][k++] = *s++;
+		k = 0;
+		s++;
 		j++;
 	}
+	p[j] = (NULL);
 	return (p);
-}
-
-int main ()
-{
-	const char *p;
-	
-	p = "palavra1 palavra2 palavra3";
-	printf("%c", **ft_split(p, ' '));
-	return (0);
 }

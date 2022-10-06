@@ -6,7 +6,7 @@
 #    By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 18:59:32 by coder             #+#    #+#              #
-#    Updated: 2022/10/04 13:44:27 by ckunimur         ###   ########.fr        #
+#    Updated: 2022/10/06 00:04:27 by ckunimur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = ft_isalpha.c ft_isdigit.c ft_memset.c ft_bzero.c ft_isalnum.c ft_isascii.c
 
 OBJ	= $(SRC:%.c=%.o)
 
-SRCBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstclear.c ftlstdelone.c ftletiter.c ft_lstlast.c\
+SRCBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c\
 			ft_lstmap.c ft_lstsize.c
 
 OBJBONUS = $(SRCBONUS:%.c=%.o)
@@ -40,9 +40,9 @@ $(OBJ):	$(SRC)
 
 bonus: $(OBJBONUS)
 
-$(OBJBONUS): $(SRCBONUS)
+$(OBJBONUS):
 		gcc $(FLAG) -c $(@:%.o=%.c)
-		ar rcs $(NAME) $(OBJBONUS)
+		ar rcs $(NAME) $@
 
 clean:
 	rm -rf $(OBJ) $(OBJBONUS)
