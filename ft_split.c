@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 13:43:40 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/10/06 19:16:48 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/07 22:17:58 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_count_str(char const *s, char c)
 	unsigned int	count;
 
 	count = 1;
-	if (s[0] == c || !s)
+	if (s[0] == c || !*s)
 		count = 0;
 	while (*s)
 	{
@@ -66,6 +66,5 @@ char	**ft_split(char const *s, char c)
 		s++;
 		j++;
 	}
-	p[j] = (NULL);
 	return (p);
 }
