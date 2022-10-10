@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 23:55:17 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/10/08 01:03:26 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/08 01:10:31 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		return ;
 	while (*lst)
 	{
-		aux = (*lst)->content;
+		aux = (*lst)->next;
 		ft_lstdelone(*lst, del);
 		*lst = aux;
 	}

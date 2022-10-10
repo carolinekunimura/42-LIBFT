@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 23:12:51 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/10/03 18:26:08 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/08 02:33:07 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	while ((*lst)->next != NULL)
+	t_list	*last;
+
+	if (!new)
+		return ;
+	if (!*lst)
 	{
-		*lst = (*lst)->next;
+		*lst = new;
+		return ;
 	}
-	(*lst)->next = new;
+	last = ft_lstlast(*lst);
+	last->next = new;
 }

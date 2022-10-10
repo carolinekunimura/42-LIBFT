@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:40:54 by ckunimur          #+#    #+#             */
-/*   Updated: 2022/09/29 20:40:23 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/10 16:06:48 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 static int	ft_intlen(int n)
 {
-	int	l;
+	int				l;
+	unsigned int	nbr;
 
 	l = 1;
+	nbr = n;
 	if (n < 0)
 	{
 		l++;
-		n *= -1;
+		nbr = n * -1;
 	}
-	while (n > 9)
+	while (nbr > 9)
 	{
-		n = (n / 10);
-		if (n != 0)
+		nbr = (nbr / 10);
+		if (nbr != 0)
 		l++;
 	}
 	return (l);
@@ -33,26 +35,24 @@ static int	ft_intlen(int n)
 
 char	*ft_itoa(int n)
 {
-	int		l;
-	char	*p;
+	int				l;
+	char			*p;
+	unsigned int	nbr;
 
-	if (n == -2147483648)
-	{
-		p = (char *)ft_calloc(12, sizeof(char));
-		p = "-2147483648";
-		return (p);
-	}
+	nbr = n;
 	l = ft_intlen(n);
 	p = (char *)ft_calloc(l + 1, sizeof(char));
+	if (!p)
+		return (0);
 	if (n < 0)
 	{
+		nbr = n * -1;
 		p[0] = '-';
-		n *= -1;
 	}
 	while (l - 1 >= 0 && p[l - 1] == '\0')
 	{
-		p[l - 1] = (n % 10) + '0';
-		n = n / 10;
+		p[l - 1] = (nbr % 10) + '0';
+		nbr = nbr / 10;
 		l--;
 	}
 	return (p);
