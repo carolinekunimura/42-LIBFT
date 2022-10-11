@@ -6,7 +6,7 @@
 /*   By: ckunimur <ckunimur@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:57:27 by coder             #+#    #+#             */
-/*   Updated: 2022/10/04 18:32:53 by ckunimur         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:04:00 by ckunimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <stddef.h>
 # include <unistd.h>
 
-typedef	struct s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-} t_list;
+}t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int n);
